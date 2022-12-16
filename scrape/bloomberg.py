@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 import re
 import pandas as pd
+from datetime import datetime
 
 driver = webdriver.Safari()
 url = "http://www.bloomberg.com"
@@ -32,3 +33,7 @@ driver.quit()
 lst = [re.sub('\s\s+', '', i,) for i in data]
 lst = list(set(lst))
 df = pd.DataFrame(lst)
+now = datetime.now()
+df['Datetime'] = now.strftime("%m/%d/%Y %-I:%M:%S")
+df = df.rename(columns={df.columns[0]: "Title"})
+df['Source'] = 'Bloomberg Main Section'
