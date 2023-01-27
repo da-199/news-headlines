@@ -5,3 +5,6 @@ ETL Overview:
 3. Database connection inserts the final queries. 
 
 <img width="372" alt="Screen Shot 2023-01-27 at 12 13 29 AM" src="https://user-images.githubusercontent.com/100179105/215014391-1b6f34b7-e392-48c9-9900-a0b5c4b59a3b.png">
+
+Google Data Studio Visualization:
+
