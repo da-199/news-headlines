@@ -1,6 +1,7 @@
 import re
 import pandas as pd
 from datetime import datetime
+import dateutil.tz
 import boto3
 from botocore.exceptions import ClientError
 import json
@@ -40,7 +41,8 @@ def insert_query(event, context):
     
         df = pd.DataFrame(data)
         now = datetime.now()
-        df['Datetime'] = now.strftime("%m/%d/%Y %-I:%M")
+        eastern = dateutil.tz.gettz('US/Eastern')
+        df['Datetime'] = datetime.now(tz=eastern).strftime("%m/%d/%Y %-I:%M %p")
         df = df.rename(columns={df.columns[0]: "Title"})
         df['Source'] = destination
         df_out = pd.concat([df, df_out])
