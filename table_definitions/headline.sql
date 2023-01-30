@@ -1,5 +1,5 @@
 CREATE TABLE public.headline(
-	title varchar(500),
-	datetime timestamp,
-	source varchar(500)
+	Title varchar(500),
+	Datetime timestamp,
+	Source varchar(500)
 );
