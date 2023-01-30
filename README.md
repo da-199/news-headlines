@@ -1,3 +1,7 @@
+The data sources for are this are the following:
+- New York Times Homepage API
+- NBC News website
+
 ETL Overview:
 
 1. Files in sources folder are scheduled to scrape data from different sources and output them into a dataframe.
