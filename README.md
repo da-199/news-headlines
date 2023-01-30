@@ -1,10 +1,10 @@
-The data sources for are this are the following:
+Data Sources:
 - New York Times Homepage API
 - NBC News website
 
 ETL Overview:
 
-1. Files in sources folder are scheduled to scrape data from different sources and output them into a dataframe.
+1. Files in sources folder are scheduled to scrape data from the different data source and outputs them into a dataframe.
 2. insert_query.py turns dataframes into SQL insert queries, guided by definitions in the table_definitions folder.
 3. database_connection.py connects to PostgreSQL and runs the SQL queries. 
 
