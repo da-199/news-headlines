@@ -24,21 +24,29 @@ def nbc(event, context):
     subhead = driver.find_elements(By.CSS_SELECTOR, "[class^=styles_headline__5qvTg]")
     baconCards = driver.find_elements(By.CSS_SELECTOR, "[class^=styles_baconCardsWidthByOneHeader]")
     iceHead = driver.find_elements(By.CLASS_NAME, 'styles_headline__ice3t')
+    cs = driver.find_elements(By.CSS_SELECTOR, "[class^=cover-spread__headline]")
+    cst = driver.find_elements(By.CLASS_NAME, 'cover-spread-tease__headline-link')
     
-    for e in head:
-        data.append(e.text)
-
-    for l in relatedHead:
-        data.append(l.text)
+    for a in cs:
+        data.append(a.text)
         
-    for j in subhead:
-        data.append(j.text)
+    for b in cst:
+        data.append(b.text)
     
     for c in baconCards:
         data.append(c.text)
         
     for d in iceHead:
         data.append(d.text)
+    
+    for e in head:
+        data.append(e.text)    
+    
+    for l in relatedHead:
+        data.append(l.text)
+        
+    for j in subhead:
+        data.append(j.text)
 
     driver.quit()
     
