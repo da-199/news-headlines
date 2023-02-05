@@ -48,7 +48,7 @@ def insert_query(event, context):
         df_out = pd.concat([df, df_out])
         
     s3 = boto3.client('s3', aws_access_key_id = secret['id'], aws_secret_access_key= secret['key'])
-    s3.put_object(Bucket='scrapedataoutput', Key='nbc_data.csv', Body=df_out.to_csv(index=False))
+    s3.put_object(Bucket='scrapedataoutput', Key='news-headlines.csv', Body=df_out.to_csv(index=False))
     
     insert = """
     INSERT INTO public.{dest_table} (
