@@ -4,6 +4,9 @@
 
 ETL Overview:
 
+  ![Data Portfolio Diagram drawio](https://user-images.githubusercontent.com/100179105/217364381-b3e247b2-837e-4b54-ab0a-5e092b5d2835.png)
+
+AWS Lambda Extraction & Processing Overview:
 1. Files in sources folder are scheduled to scrape data from the different data source and outputs them into a dataframe.
 2. insert_query.py turns dataframes into SQL insert queries, guided by definitions in the table_definitions folder.
 3. database_connection.py connects to PostgreSQL and runs the SQL queries. 
