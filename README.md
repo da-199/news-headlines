@@ -16,4 +16,4 @@ AWS Step Functions (AWS Lambda Extraction & Processing) Overview:
 
 [Google Data Studio Visualization](https://lookerstudio.google.com/u/0/reporting/214b0ce7-0ee1-4702-9ded-160814a080a0/page/qA9CD):
   
-  <img width="864" alt="Screen Shot 2023-01-30 at 1 08 20 AM" src="https://user-images.githubusercontent.com/100179105/215400508-55b05a90-2dbc-4401-8741-2106fb319001.png">
+  <img width="900" alt="Screen Shot 2023-02-17 at 1 19 00 AM" src="https://user-images.githubusercontent.com/100179105/219564899-fcae9861-6dc9-463c-b038-621724cd59a8.png">
