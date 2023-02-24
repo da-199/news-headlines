@@ -32,8 +32,8 @@ def nyt(event, context):
     data = []
     
     for i in response['results']:
-        data.append(i['title'])
+        data.append([i['title'], i['section']])
     
     destination = 'NYT'
     
-    return {'data': data, 'destination': destination}
+    return {destination: data}
