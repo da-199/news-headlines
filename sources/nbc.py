@@ -13,20 +13,25 @@ def nbc(event, context):
     'styles_headline__5qvTg':'h3',
     'styles_headline__ice3t':'h2',
     'styles_baconCardsWidth':'h3',
-    'related-content__headline-link':'a',
+    'related-content__headline-link':'h3',
     'cover-spread':'h2'}
     
     data = parse(soup, class_dict)
     
     destination = 'NBC'
     
-    return {'data': data, 'destination': destination}
+    return {destination: data}
     
 def parse(soup, class_dict):
-    final = []    
+    lst = []    
     
     for key, value in class_dict.items():
-        lst = [x.get_text(strip=True) for x in soup.find_all(value, class_=re.compile(key))]
-        final.extend(lst)
+        target = soup.find_all(value, class_=re.compile(key))
         
-    return final
+        for link in target:
+            url = link.next_element['href']
+            category = url.split('.com/')[1].split('/')[0]   
+            title = link.get_text(strip=True)
+            lst.append([title, category])
+        
+    return lst
