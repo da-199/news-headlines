@@ -1,6 +1,6 @@
 [Data Sources](https://github.com/dhruvi-9/news-headlines/tree/main/sources):
 - New York Times Homepage API
-- NBC News website
+- NBC News front page 
 
 ETL Overview:
 
