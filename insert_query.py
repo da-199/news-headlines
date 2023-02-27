@@ -27,6 +27,8 @@ def insert_query(event, context):
     secret = get_secret_value_response['SecretString']
     secret = json.loads(secret)
     
+    cat_dict = {'tech':'technology', 'us':'us-news'}
+    
     df_out = pd.DataFrame()
 
     for source in event:
@@ -46,6 +48,9 @@ def insert_query(event, context):
         df = df.rename(columns={df.columns[0]: "Title"})
         df['Source'] = destination
         df_out = pd.concat([df, df_out])
+    
+    for key, value in cat_dict.items():
+    	df_out['Category'].loc[df_out['Category']==key] = value
         
     s3 = boto3.client('s3', aws_access_key_id = secret['id'], aws_secret_access_key= secret['key'])
     s3.put_object(Bucket='scrapedataoutput', Key='news-headlines.csv', Body=df_out.to_csv(index=False))
