@@ -30,8 +30,11 @@ def parse(soup, class_dict):
         
         for link in target:
             url = link.next_element['href']
-            category = url.split('.com/')[1].split('/')[0]   
+            category = url.split('.com/')[1].split('/')[0] 
+            if category == 'news':
+                category = url.split('/news/')[1].split('/')[0]
             title = link.get_text(strip=True)
+            title = re.sub('\xa0', ' ', title)
             lst.append([title, category])
         
     return lst
