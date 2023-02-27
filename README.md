@@ -2,7 +2,7 @@
 - New York Times Homepage API
 - NBC News front page 
 
-ETL Overview:
+ETL Architecture Overview:
 
   ![Data Portfolio Diagram](https://user-images.githubusercontent.com/100179105/221451252-da4c80bb-b635-45a9-b0ca-f2a05431076b.jpg)
 
