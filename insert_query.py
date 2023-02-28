@@ -8,52 +8,31 @@ import json
 
 def insert_query(event, context):
     
-    secret_name = "aws_access_key"
-    region_name = "us-east-1"
-
-    session = boto3.session.Session()
-    client = session.client(
-        service_name='secretsmanager',
-        region_name=region_name
-    )
-
-    try:
-        get_secret_value_response = client.get_secret_value(
-            SecretId=secret_name
-        )
-    except ClientError as e:
-        raise e
-
-    secret = get_secret_value_response['SecretString']
-    secret = json.loads(secret)
-    
-    cat_dict = {'tech':'technology', 'us':'us-news'}
+    cat_dict = {'tech':'technology', 'us':'us-news', 'select':'shopping'}
     
     df_out = pd.DataFrame()
 
     for source in event:
-        data = source['data']
-        destination = source['destination']
+        [data] = list(source.values())
+        [destination] = source.keys()
         dest_table = 'headline'
     
         if destination == 'NBC':
-            data = [re.sub(r"'", '’', i,) for i in data]
-    
-        data = list(set(data))
+            for i in data:
+                i[0] = re.sub(r"'", '’', str(i[0]))
     
         df = pd.DataFrame(data)
         now = datetime.now()
         eastern = dateutil.tz.gettz('US/Eastern')
         df['Datetime'] = datetime.now(tz=eastern).strftime("%m/%d/%Y %-I:%M %p")
-        df = df.rename(columns={df.columns[0]: "Title"})
+        df = df.rename(columns={df.columns[0]: "Title", df.columns[1]: "Category"})
         df['Source'] = destination
         df_out = pd.concat([df, df_out])
     
     for key, value in cat_dict.items():
     	df_out['Category'].loc[df_out['Category']==key] = value
-        
-    s3 = boto3.client('s3', aws_access_key_id = secret['id'], aws_secret_access_key= secret['key'])
-    s3.put_object(Bucket='scrapedataoutput', Key='news-headlines.csv', Body=df_out.to_csv(index=False))
+    
+    df_out = df_out[['Title', 'Datetime', 'Source', 'Category']]  
     
     insert = """
     INSERT INTO public.{dest_table} (
@@ -74,4 +53,4 @@ def insert_query(event, context):
     
     query = insert + columns_string + ')\n     VALUES\n' + values_string[:-2] + ';' + '\n' + delete_statement + ';'
     
-    return {'query': query}
+    return {'df_out': df_out.to_dict()}, {'timestamp': df['Datetime'].max()}, {'query': query}
