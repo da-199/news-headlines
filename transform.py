@@ -12,15 +12,15 @@ def transform(event, context):
     df_out = pd.DataFrame()
 
     for source in event:
-        [data] = list(source.values())
         [destination] = source.keys()
+        [source] = source.values() 
         dest_table = 'headline'
     
         if destination == 'NBC':
-            for i in data:
+            for i in source:
                 i[0] = re.sub(r"'", '’', str(i[0]))
     
-        df = pd.DataFrame(data)
+        df = pd.DataFrame(source)
         now = datetime.now()
         eastern = dateutil.tz.gettz('US/Eastern')
         df['Datetime'] = datetime.now(tz=eastern).strftime("%m/%d/%Y %-I:%M %p")
@@ -30,6 +30,8 @@ def transform(event, context):
     
     for key, value in cat_dict.items():
         df_out['Category'].loc[df_out['Category']==key] = value
+    
+    df_out['Category'] = df_out['Category'].apply(lambda x: 'other' if x.count('-')>=3 else x)
     
     df_out = df_out[['Title', 'Datetime', 'Source', 'Category']]  
     
