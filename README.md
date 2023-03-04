@@ -5,7 +5,7 @@
 ETL Architecture Overview:
 
   <p align="center">
-  <img width="460" height="300" src="[http://www.fillmurray.com/460/300](https://user-images.githubusercontent.com/100179105/222882319-950bfd34-7ed2-4da4-8777-724f029403e2.jpg)">
+  <img width="460" height="300" src="https://user-images.githubusercontent.com/100179105/222882386-a1b6b074-5540-4524-971a-3e216a5a337c.jpg">
   </p>
 
   1. Files in the [sources](https://github.com/dhruvi-9/news-headlines/tree/main/sources) folder are scheduled to extract data on an hourly basis at the start of the hour.
