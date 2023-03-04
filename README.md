@@ -4,7 +4,6 @@
 
 ETL Architecture Overview:
 
-  ![Data Portfolio Diagram](https://user-images.githubusercontent.com/100179105/221451252-da4c80bb-b635-45a9-b0ca-f2a05431076b.jpg)
   ![Data Portfolio Diagram](https://user-images.githubusercontent.com/100179105/222882276-ad4767d6-648c-4274-a3d0-ce4c5f731b75.jpg)
 
   1. Files in the [sources](https://github.com/dhruvi-9/news-headlines/tree/main/sources) folder are scheduled to extract data on an hourly basis at the start of the hour.
