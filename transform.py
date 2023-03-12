@@ -34,8 +34,6 @@ def transform(event, context):
         df_out['Category'].loc[df_out['Category']==key] = value
     
     df_out['Category'] = df_out['Category'].apply(lambda x: 'other' if x.count('-')>=3 else x)
-    df_out['Category'].loc[df_out['Category']=='abcnews'] = 'none'
-    
     df_out = df_out[['Title', 'Datetime', 'Source', 'Category']]  
     df_out['Category'].loc[df_out['Category']=='abcnews'] = 'none'
     
