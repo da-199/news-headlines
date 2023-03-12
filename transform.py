@@ -6,9 +6,12 @@ import boto3
 import json
 
 def transform(event, context):
-    
-    cat_dict = {'tech':'technology', 'us':'us-news', 'select':'shopping'}
-    
+        
+    cat_dict = {'tech':'technology',
+                'us':'us-news',
+                'select':'shopping',
+                'international':'world'}   
+                
     df_out = pd.DataFrame()
 
     for source in event:
@@ -16,9 +19,8 @@ def transform(event, context):
         [source] = source.values() 
         dest_table = 'headline'
     
-        if destination == 'NBC':
-            for i in source:
-                i[0] = re.sub(r"'", '’', str(i[0]))
+        for i in source:
+            i[0] = re.sub(r"'", '’', str(i[0]))
     
         df = pd.DataFrame(source)
         now = datetime.now()
@@ -32,8 +34,8 @@ def transform(event, context):
         df_out['Category'].loc[df_out['Category']==key] = value
     
     df_out['Category'] = df_out['Category'].apply(lambda x: 'other' if x.count('-')>=3 else x)
-    
     df_out = df_out[['Title', 'Datetime', 'Source', 'Category']]  
+    df_out['Category'].loc[df_out['Category']=='abcnews'] = 'none'
     
     s3_output(df_out, df['Datetime'].max())    
         
