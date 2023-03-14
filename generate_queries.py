@@ -28,8 +28,6 @@ def generate_queries(event, context):
         values_string += re.sub(r'nan', 'null', str(row))
         values_string += ',\n'
     
-    delete_statement = f"DELETE FROM {dest_table} WHERE DATETIME < NOW() - INTERVAL '7 DAY'"
-    
-    query = insert + columns_string + ')\n     VALUES\n' + values_string[:-2] + ';' + '\n' + delete_statement + ';'
+    query = insert + columns_string + ')\n     VALUES\n' + values_string[:-2] + ';' + '\n' + ';'
     
     return {'query': query}
