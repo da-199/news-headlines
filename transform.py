@@ -39,7 +39,7 @@ def transform(event, context):
     
     s3_output(df_out, df['Datetime'].max())    
         
-    return {'dest_table': dest_table}, {'df_out': df_out.to_dict('list')}
+    return {dest_table: df_out.to_dict('list')}
     
 def s3_output(df_out, timestamp):
 
