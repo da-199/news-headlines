@@ -1,6 +1,6 @@
-CREATE TABLE public.headline(
-	Title varchar(500),
-	Datetime timestamp,
-	Source varchar(500),
-	Category varchar(500)
+CREATE TABLE public.v2_headline (
+	title varchar(500),
+	datetime timestamp,
+	source varchar(500),
+	category varchar(500)
 );
