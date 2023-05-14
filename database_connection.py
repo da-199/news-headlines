@@ -26,18 +26,23 @@ def conn(event, context):
     secret = get_secret_value_response['SecretString']
     secret = json.loads(secret)
 
-    query = event['query']
+    query_string = event['query']
+    seperator = event['seperator']
+    
+    queries = [query for query in query_string.split(seperator) if query.strip()]
     
     try:
         conn = psycopg2.connect(host=secret['host'], port=secret['port'], database=secret['dbname'], user=secret['username'], password=secret['password'], sslrootcert="SSLCERTIFICATE")
         cur = conn.cursor()
-        cur.execute(query)
-        query_results = cur.fetchall()
-        print(query_results)
+        
+        for query in queries:
+            cur.execute(query)
+
+        conn.commit()
+            
     except Exception as e:
         print("Database connection failed due to {}".format(e))     
         
-    conn.commit()
     conn.close()
     cur.close()    
     
