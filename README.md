@@ -13,4 +13,4 @@ ETL Architecture Overview:
   2. generate_queries.py turns the data into SQL insert queries and s3_output.py outputs a csv of the dataframe in an S3 bucket.
   3. database_connection.py loads the data to PostgreSQL by running the queries. 
 
-[Google Data Studio Visualization](https://lookerstudio.google.com/u/0/reporting/214b0ce7-0ee1-4702-9ded-160814a080a0/page/qA9CD)
+[Google Data Studio Visualization](https://lookerstudio.google.com/u/0/reporting/78afc346-af31-485e-b6c9-e88ddebdfe8b/page/qA9CD)
