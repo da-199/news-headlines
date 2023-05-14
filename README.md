@@ -6,7 +6,8 @@
 ETL Architecture Overview:
 
   <p align="center">
-  <img width="462" height="463" src="https://user-images.githubusercontent.com/100179105/224434483-92460a1a-2393-4d31-884e-680ceb796946.png">
+  <img width="952" height="183" src=https://github.com/dhruvi-9/news-headlines/assets/100179105/7e216cff-2fe4-4332-8b01-7dd73ae117e1
+>
   </p>
 
   1. Files in the [sources](https://github.com/dhruvi-9/news-headlines/tree/main/sources) folder are scheduled to extract data on an hourly basis at the start of the hour.
