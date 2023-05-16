@@ -71,7 +71,7 @@ def junction_table_query():
         				from (
         					SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(a.word, '-', ''), '‘', ''), '’', ''), '—', ''), '(', ''), ')', ''), '+', ''), ';', ''), '&', ''), '!', ''), '$', ''), '?', ''), ':', ''), '.', ''), ',', '') AS word, id
         					from (
-        						SELECT regexp_split_to_table(title, ' ') AS word, id
+        						SELECT lower(regexp_split_to_table(title, ' ')) AS word, id
         						from v2_headline  
         					) as a
         				) as b
