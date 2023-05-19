@@ -11,7 +11,8 @@ ETL Architecture Overview:
   </p>
 
   1. Files in the [sources](https://github.com/dhruvi-9/news-headlines/tree/main/sources) folder are scheduled to extract data on an hourly basis at the start of the hour.
-  2. generate_queries.py turns the data into SQL insert queries and s3_output.py outputs a csv of the dataframe in an S3 bucket.
-  3. database_connection.py loads the data to PostgreSQL by running the queries. 
+  2. [Transformations on tables are performed.](https://github.com/dhruvi-9/news-headlines/tree/main/transformations)
+  3. generate_queries.py turns the dataframe into SQL queries. 
+  4. database_connection.py loads the data to PostgreSQL by running the queries. 
 
 [Google Data Studio Visualization](https://lookerstudio.google.com/u/0/reporting/78afc346-af31-485e-b6c9-e88ddebdfe8b/page/qA9CD)
