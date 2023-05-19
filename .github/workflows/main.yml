@@ -34,4 +34,4 @@ jobs:
 
     - name: Deploy lambda_handler.py to Lambda
       run:
-        zappa update production lambda_handler.py  
+        zappa update production  

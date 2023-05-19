@@ -1,0 +1,9 @@
+{
+    "lambda_handler": {
+        "aws_region": "us-east-1",
+        "runtime": "python3.7",
+        "s3_bucket": "",
+        "handler": "lambda_function.lambda_handler",
+        "keep_warm": false
+    }
+}
