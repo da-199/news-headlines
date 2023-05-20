@@ -1,8 +1,8 @@
 {
-    "lambda_handler": {
+    "production": {
         "aws_region": "us-east-1",
         "runtime": "python3.7",
-        "s3_bucket": "",
+        "s3_bucket": "news-headlines-lambda-deployment",
         "handler": "lambda_function.lambda_handler",
         "keep_warm": false
     }
