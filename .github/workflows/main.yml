@@ -20,6 +20,11 @@ jobs:
       with:
         python-version: 3.7
 
+    - name: Create and activate virtual environment
+      run:
+        python -m venv venv
+        source venv/bin/activate
+
     - name: Install dependencies
       run:
         python -m pip install --upgrade pip
@@ -33,5 +38,6 @@ jobs:
         aws-region: us-east-1 
 
     - name: Deploy lambda_handler.py to Lambda
-      run:
+      run: |
+        source venv/bin/activate
         zappa update production  
