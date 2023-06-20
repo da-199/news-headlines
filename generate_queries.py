@@ -41,14 +41,13 @@ def df_queries(event, dest_table):
 def word_count_queries():
     
     query = """
-    -- Insert new words or update counts if the word already exists
     INSERT INTO word_count (word, count)
-    SELECT sw.word, sw.count FROM staging_word_count sw
-    ON CONFLICT (word) DO UPDATE
-    SET count = word_count.count + EXCLUDED.count;
-    
-    -- Clear the staging_word_count table
-    TRUNCATE staging_word_count;
+    SELECT word, count FROM (
+      SELECT word, sum(count) as count 
+      FROM staging_word_count 
+      GROUP BY word
+    ) as staging
+    ON CONFLICT (word) DO UPDATE SET count = word_count.count + excluded.count;
     """
     
     return query
