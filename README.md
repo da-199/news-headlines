@@ -17,7 +17,6 @@
 
 **Data Model**
 
-![news-headlines diagram](https://github.com/dhruvi-9/news-headlines/assets/100179105/935a336b-9c61-47f6-9c5a-84568105f8a7)
-
+![news-headlines diagram](https://github.com/dhruvi-9/news-headlines/assets/100179105/1ecdc1be-74df-4440-ae9c-b876ec276bbc)
 
 **[Google Data Studio Visualization](https://lookerstudio.google.com/u/0/reporting/78afc346-af31-485e-b6c9-e88ddebdfe8b/page/qA9CD)**
