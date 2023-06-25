@@ -39,6 +39,7 @@ def test_word(event, context):
         flat[i] = re.sub('[-‘’—()+;&!$?:,.]', '', flat[i])
         flat[i] =  flat[i].replace("'", '')
         flat[i] = re.sub('\d','', flat[i])
+        flat[i] = flat[i].lower()
     
         for y in exclude:
             if y == flat[i].lower():
