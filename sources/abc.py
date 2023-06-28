@@ -1,12 +1,13 @@
 import re
-from bs4 import BeautifulSoup
-import requests
+from sources.extractor import ExtractorBase
 
 def abc(event, context):
     
     url = 'https://abcnews.go.com/'
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
+    destination = 'ABC'
+
+    soup = ExtractorBase(url, destination)
+    soup = soup.extract_by_html()
     
     class_dict = {'News__title':'h4',
     'News__Item__Headline':'h2',
@@ -16,8 +17,6 @@ def abc(event, context):
     'VideoTile__Title':'h3'}
     
     data = []
-    
-    destination = 'ABC'
     
     for key, value in class_dict.items():
         
