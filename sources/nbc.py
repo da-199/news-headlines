@@ -1,13 +1,14 @@
 import time
 import re
-import requests
-from bs4 import BeautifulSoup
+from sources.extractor import ExtractorBase
 
 def nbc(event, context):
     
     url = 'https://www.nbcnews.com/'
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
+    destination = 'NBC'
+
+    soup = ExtractorBase(url, destination)
+    soup = soup.extract_by_html()
 
     class_dict = {'tease-card__headline':'h2',
     'styles_headline__5qvTg':'h3',
@@ -17,9 +18,7 @@ def nbc(event, context):
     'cover-spread':'h2'}
     
     data = parse(soup, class_dict)
-    
-    destination = 'NBC'
-    
+     
     return {destination: data}
     
 def parse(soup, class_dict):
