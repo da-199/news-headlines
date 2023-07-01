@@ -10,7 +10,7 @@ def s3_output(event, context):
     secret_name = "aws_access_key"
     secret = get_secrets(secret_name)
     
-    df = pd.DataFrame()
+    df = pd.DataFrame(event)
     
     now = datetime.now()
     eastern = dateutil.tz.gettz('US/Eastern')
